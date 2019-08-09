@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HomeTest</string>
+    <string name="empty_server_response">Empty Server Response</string>
+    <string name="no_server_response">No Server Response</string>
+</resources>

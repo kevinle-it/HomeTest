@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    
+    <!--Chip Color-->
+    <color name="jewel">#0C6C38</color>
+    <color name="sherpa_blue">#004A4D</color>
+    <color name="chelsea_gem">#936c00</color>
+    <color name="pompadour">#5a0259</color>
+    <color name="blue_lagoon">#006c84</color>
+    <color name="brown">#995200</color>
+    <color name="camelot">#8c2f59</color>
+    <color name="tabasco">#8c2f10</color>
+    <color name="eden">#104e59</color>
+    <array name="color_array">
+        <item>@color/jewel</item>
+        <item>@color/sherpa_blue</item>
+        <item>@color/chelsea_gem</item>
+        <item>@color/pompadour</item>
+        <item>@color/blue_lagoon</item>
+        <item>@color/brown</item>
+        <item>@color/camelot</item>
+        <item>@color/tabasco</item>
+        <item>@color/eden</item>
+    </array>
+</resources>
