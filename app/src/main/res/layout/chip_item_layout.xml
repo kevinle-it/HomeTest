@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="com.trile.hometest.utils.TextFormatterKt"/>
+
         <variable
-            name="chip"
-            type="com.trile.hometest.store.room.entity.ChipEntity"/>
+                name="chip"
+                type="com.trile.hometest.store.room.entity.ChipEntity"/>
     </data>
 
     <TextView
-        android:id="@+id/chip_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/chip_item_padding"
-        android:layout_marginLeft="@dimen/chip_item_margin"
-        android:layout_marginTop="@dimen/chip_item_margin"
-        android:layout_marginRight="@dimen/chip_item_margin_right"
-        android:layout_marginBottom="@dimen/chip_item_margin"
-        android:text="@{TextFormatterKt.formatText(chip.name)}"
-        android:textSize="@dimen/chip_item_text_size"
-        android:textColor="@android:color/white"
-        android:background="@drawable/chip_item_background"
-        tools:text="Item Name"/>
+            android:id="@+id/chip_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/chip_item_top_bottom_padding"
+            android:paddingBottom="@dimen/chip_item_top_bottom_padding"
+            android:paddingStart="@dimen/chip_item_start_end_padding"
+            android:paddingEnd="@dimen/chip_item_start_end_padding"
+            android:layout_marginStart="@dimen/chip_item_margin"
+            android:layout_marginTop="@dimen/chip_item_margin"
+            android:layout_marginEnd="@dimen/chip_item_margin_end"
+            android:layout_marginBottom="@dimen/chip_item_margin"
+            android:text="@{TextFormatterKt.formatText(chip.name)}"
+            android:textSize="@dimen/chip_item_text_size"
+            android:textColor="@android:color/white"
+            android:background="@drawable/chip_item_background"
+            tools:text="Item Name"/>
 </layout>

@@ -20,25 +20,25 @@ class ChipRepository(private val application: Application) {
     private val mRoomHelper = RoomHelper(mDb)
 
     fun getChipListFromDB(): Maybe<List<ChipEntity>?> =
-            Maybe.defer { Maybe.just(mRoomHelper.getAllChipItems()) }
-                    .subscribeOn(Schedulers.io())
-                    .onErrorResumeNext { _: Throwable ->
-                        Maybe.just(ArrayList())
-                    }
+        Maybe.defer { Maybe.just(mRoomHelper.getAllChipItems()) }
+            .subscribeOn(Schedulers.io())
+            .onErrorResumeNext { _: Throwable ->
+                Maybe.just(ArrayList())
+            }
 
     fun getChipListFromAPI(): Maybe<List<ChipEntity>> =
-            Maybe.just(ApiService.getInstance()?.getItemNames())
-                    .subscribeOn(Schedulers.io())
-                    .map {
-                        val response = it.execute()
-                        val nameList = response.body()
-                        val chipItems = nameList?.map { name -> ChipEntity(name) } ?: ArrayList()
-                        chipItems
-                    }
+        Maybe.just(ApiService.getInstance()?.getItemNames())
+            .subscribeOn(Schedulers.io())
+            .map {
+                val response = it.execute()
+                val nameList = response.body()
+                val chipItems = nameList?.map { name -> ChipEntity(name) } ?: ArrayList()
+                chipItems
+            }
 
     fun saveToDB(itemList: List<ChipEntity>?) =
-            Single.defer {
-                itemList?.let { mRoomHelper.insertChipItems(it) }
-                Single.just(mRoomHelper.getAllChipItems())
-            }.subscribeOn(Schedulers.io())
+        Single.defer {
+            itemList?.let { mRoomHelper.insertChipItems(it) }
+            Single.just(mRoomHelper.getAllChipItems())
+        }.subscribeOn(Schedulers.io())
 }

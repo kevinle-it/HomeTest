@@ -49,8 +49,6 @@ class ChipAdapter(private val context: Context, private val maxItemHeight: Int) 
                 colorArray[position % colorArray.size],
                 PorterDuff.Mode.SRC_ATOP
             )
-        holder.binding.root.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
-        Log.d("onBindViewHolder", holder.binding.root.measuredHeight.toString())
         if (maxItemHeight > 0) {
             holder.binding.root.chip_item.height = maxItemHeight
         }

@@ -44,7 +44,8 @@ fun String.formatText(): String {
 
             // We compare the difference between them to find the minimal one
             if (abs(spaceToTheLeft - ((this.length - 1) - spaceToTheLeft))
-                    < abs(spaceToTheRight - ((this.length - 1) - spaceToTheRight))) {
+                < abs(spaceToTheRight - ((this.length - 1) - spaceToTheRight))
+            ) {
                 result = this.substring(0, spaceToTheLeft) + "\n" + this.substring(spaceToTheLeft + 1)
             } else {
                 result = this.substring(0, spaceToTheRight) + "\n" + this.substring(spaceToTheRight + 1)

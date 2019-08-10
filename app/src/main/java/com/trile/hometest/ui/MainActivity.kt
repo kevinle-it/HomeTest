@@ -49,10 +49,7 @@ class MainActivity : AppCompatActivity() {
                 chip_item.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 chip_item.text = "Item\nName"
                 chip_item.post {
-                    var a = chip_item.measuredHeight
-                    var b = a
-
-                    chipAdapter = ChipAdapter(this@MainActivity, a)
+                    chipAdapter = ChipAdapter(this@MainActivity, chip_item.measuredHeight)
                     chip_list.adapter = chipAdapter
 
                     mChipViewModel.loadData()

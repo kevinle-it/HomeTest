@@ -41,11 +41,11 @@ interface ApiService {
                     baseURL = if (baseURL.endsWith("/")) baseURL else "$baseURL/"
 
                     val retrofit = Retrofit.Builder()
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                            .addConverterFactory(MoshiConverterFactory.create().withNullSerialization())
-                            .baseUrl(baseURL)
-                            .client(builder.build())
-                            .build()
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .addConverterFactory(MoshiConverterFactory.create().withNullSerialization())
+                        .baseUrl(baseURL)
+                        .client(builder.build())
+                        .build()
 
                     INSTANCE = retrofit.create(ApiService::class.java)
                 }

@@ -12,8 +12,8 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "chip", indices = [Index(value = ["name"], unique = true)])
 data class ChipEntity(
-        @ColumnInfo(name = "name")
-        var name: String?
+    @ColumnInfo(name = "name")
+    var name: String?
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

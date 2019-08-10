@@ -23,9 +23,9 @@ abstract class RoomDataSource : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(RoomDataSource::class) {
                     INSTANCE = Room.databaseBuilder(
-                            context.applicationContext,
-                            RoomDataSource::class.java,
-                            "test.db"
+                        context.applicationContext,
+                        RoomDataSource::class.java,
+                        "test.db"
                     ).build()
                 }
             }

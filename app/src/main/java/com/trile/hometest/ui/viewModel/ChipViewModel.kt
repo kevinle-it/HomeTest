@@ -28,15 +28,15 @@ class ChipViewModel(private val app: Application) : AndroidViewModel(app) {
         val maybeDB = mRepository.getChipListFromDB()
 
         val disposableDB =
-                maybeDB.observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ itemList: List<ChipEntity>? ->
-                            itemList?.let { _mChipListLiveData.value = it }
-                            callAPI()
-                        }, { _: Throwable? ->
-                            // Nothing to do
-                        }, {
-                            callAPI()
-                        })
+            maybeDB.observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ itemList: List<ChipEntity>? ->
+                    itemList?.let { _mChipListLiveData.value = it }
+                    callAPI()
+                }, { _: Throwable? ->
+                    // Nothing to do
+                }, {
+                    callAPI()
+                })
 
         disposableDB.let { mCompositeDisposable.add(it) }
     }
@@ -45,24 +45,24 @@ class ChipViewModel(private val app: Application) : AndroidViewModel(app) {
         val maybeAPI = mRepository.getChipListFromAPI()
 
         val disposableAPI =
-                maybeAPI.observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ itemList: List<ChipEntity>? ->
-                            // Save server response to DB then show item list on UI
-                            mRepository.saveToDB(itemList)
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe { items: List<ChipEntity>?, t: Throwable? ->
-                                        items?.let {
-                                            _mChipListLiveData.value = it
-                                        }
-                                        t?.let {
-                                            it.printStackTrace()
-                                        }
-                                    }
-                        }, { t: Throwable? ->
-                            t?.printStackTrace()
-                        }, {
-                            _mErrorLiveData.value = app.getString(R.string.empty_server_response)
-                        })
+            maybeAPI.observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ itemList: List<ChipEntity>? ->
+                    // Save server response to DB then show item list on UI
+                    mRepository.saveToDB(itemList)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe { items: List<ChipEntity>?, t: Throwable? ->
+                            items?.let {
+                                _mChipListLiveData.value = it
+                            }
+                            t?.let {
+                                it.printStackTrace()
+                            }
+                        }
+                }, { t: Throwable? ->
+                    t?.printStackTrace()
+                }, {
+                    _mErrorLiveData.value = app.getString(R.string.empty_server_response)
+                })
 
         disposableAPI.let { mCompositeDisposable.add(it) }
     }
