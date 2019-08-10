@@ -26,11 +26,7 @@ class ChipAdapter(private val context: Context, private val maxItemHeight: Int) 
     RecyclerView.Adapter<ChipAdapter.ChipItemHolder>() {
 
     private val mChipItems = ArrayList<ChipEntity>()
-    private var colorArray = ArrayList<Int>()
-
-    init {
-        colorArray = context.resources.getIntArray(R.array.color_array).toCollection(ArrayList())
-    }
+    private val colorArray: IntArray = context.resources.getIntArray(R.array.color_array)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ChipItemHolder(
